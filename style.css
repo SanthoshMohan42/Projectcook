@@ -1,0 +1,96 @@
+/* ================================
+   COLES BRAND THEME – PROJECT COOK
+   ================================ */
+
+/* Page background */
+.stApp {
+    background: linear-gradient(
+        180deg,
+        #E11C2A 0%,
+        #E11C2A 35%,
+        #FFFFFF 35%,
+        #FFFFFF 100%
+    );
+    font-family: "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Subtle Coles logo watermark */
+.stApp::before {
+    content: "";
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 420px;
+    height: 180px;
+    background-image: url("https://upload.wikimedia.org/wikipedia/commons/5/59/Coles_Logo.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    opacity: 0.05;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+}
+
+/* Main container card */
+.block-container {
+    background-color: #FFFFFF;
+    border-radius: 18px;
+    padding: 2.5rem 2.5rem;
+    margin-top: 2rem;
+    box-shadow: 0px 8px 25px rgba(0,0,0,0.15);
+    z-index: 1;
+    position: relative;
+}
+
+/* Titles */
+h1, h2, h3 {
+    color: #E11C2A;
+    font-weight: 700;
+}
+
+/* Caption text */
+.stCaption {
+    color: #444444;
+    font-size: 0.95rem;
+}
+
+/* Labels */
+label {
+    font-weight: 600;
+    color: #222222;
+}
+
+/* Inputs */
+input, select, textarea {
+    border-radius: 10px !important;
+    border: 1px solid #CCCCCC !important;
+}
+
+/* Buttons */
+.stButton > button {
+    background-color: #E11C2A;
+    color: white;
+    font-weight: 700;
+    border-radius: 14px;
+    padding: 0.6rem 1.2rem;
+    border: none;
+    transition: all 0.2s ease-in-out;
+}
+
+.stButton > button:hover {
+    background-color: #B81622;
+    transform: scale(1.02);
+}
+
+/* Success box */
+.stAlert-success {
+    background-color: #FBE9EB;
+    border-left: 6px solid #E11C2A;
+    color: #222222;
+    font-weight: 600;
+}
+
+/* Footer hide */
+footer {
+    visibility: hidden;
+}
