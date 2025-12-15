@@ -12,20 +12,6 @@ st.set_page_config(
 )
 
 # --------------------------------------------------
-# FEATURE ORDER (MUST MATCH TRAINING EXACTLY)
-# --------------------------------------------------
-FEATURE_COLUMNS = [
-    "Human_Traffic",
-    "Weather",
-    "Public_Event",
-    "Shredded_chicken",
-    "day_of_week",
-    "day_of_month",
-    "week_of_year",
-    "Time_minutes"
-]
-
-# --------------------------------------------------
 # Load trained model
 # --------------------------------------------------
 @st.cache_resource
@@ -39,10 +25,20 @@ model = load_model()
 # UI
 # --------------------------------------------------
 st.title("🍗 Project COOK – Smart PDT Recommendation")
-st.caption("Human-in-the-loop chicken production recommendation")
+st.caption("Human-in-the-loop cooking recommendation system")
 
 date_input = st.date_input("Select date")
-time_input = st.time_input("Batch time (HH:MM)")
+
+# 🔹 FIXED TIME OPTIONS (AS REQUESTED)
+TIME_OPTIONS = [
+    "06:30","08:20","10:20","11:20","14:20","18:20","17:20",
+    "17:30","18:30","08:45","09:45","14:30","10:00","12:45",
+    "14:45","09:00","09:10","11:00","13:00","16:45","09:30",
+    "11:30","14:00","15:00","11:15","15:30","12:15","13:30",
+    "09:15","17:00","12:30","17:15"
+]
+
+time_input = st.selectbox("Batch time", TIME_OPTIONS)
 
 shredded = st.number_input(
     "Shredded chicken prepared (units)",
@@ -66,7 +62,7 @@ public_event = st.selectbox(
 )
 
 # --------------------------------------------------
-# Encoding maps (MUST MATCH TRAINING)
+# Encoding maps (UNCHANGED)
 # --------------------------------------------------
 traffic_map = {
     "Much Lower": -2,
@@ -83,13 +79,18 @@ weather_map = {
 }
 
 # --------------------------------------------------
-# Prediction
+# Helper: Convert HH:MM → minutes
+# --------------------------------------------------
+def time_to_minutes(t):
+    h, m = map(int, t.split(":"))
+    return h * 60 + m
+
+# --------------------------------------------------
+# Prediction logic (UNCHANGED CORE)
 # --------------------------------------------------
 if st.button("Predict chicken requirement"):
     date = pd.to_datetime(date_input)
-
-    # Convert time → minutes since midnight
-    time_minutes = time_input.hour * 60 + time_input.minute
+    time_minutes = time_to_minutes(time_input)
 
     input_row = [
         traffic_map[human_traffic],
@@ -102,12 +103,7 @@ if st.button("Predict chicken requirement"):
         time_minutes
     ]
 
-    # Convert to NumPy array (shape = (1, 8))
     input_array = np.array(input_row, dtype=float).reshape(1, -1)
-
-    # Safety debug (remove later)
-    st.write("Model input (ordered):", dict(zip(FEATURE_COLUMNS, input_row)))
-    st.write("Input shape:", input_array.shape)
 
     prediction = model.predict(input_array)[0]
 
