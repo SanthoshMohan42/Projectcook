@@ -3,6 +3,13 @@
    ===================================== */
 
 /* ---------- App Background ---------- */
+.coles-logo {
+    position: fixed;
+    top: 16px;
+    right: 22px;
+    width: 120px;
+    z-index: 100;
+}
 .stApp {
     background: linear-gradient(
         180deg,
