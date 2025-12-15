@@ -9,9 +9,20 @@ st.set_page_config(
     layout="centered"
 )
 def load_css():
+    # Load CSS file
     with open("style.css") as f:
         st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
 
+    # Add Coles logo (top-right)
+    st.markdown(
+        """
+        <img class="coles-logo"
+             src="https://upload.wikimedia.org/wikipedia/commons/5/59/Coles_Logo.svg"> 
+             """,
+        unsafe_allow_html=True
+    )
+
+# Call the function
 load_css()
 
 @st.cache_resource
