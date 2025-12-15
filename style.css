@@ -1,96 +1,112 @@
-/* ================================
-   COLES BRAND THEME – PROJECT COOK
-   ================================ */
+/* =====================================
+   PROJECT COOK – COLES BRAND THEME
+   ===================================== */
 
-/* Page background */
+/* ---------- App Background ---------- */
 .stApp {
     background: linear-gradient(
         180deg,
         #E11C2A 0%,
-        #E11C2A 35%,
-        #FFFFFF 35%,
+        #E11C2A 22%,
+        #FFFFFF 22%,
         #FFFFFF 100%
     );
     font-family: "Helvetica Neue", Arial, sans-serif;
 }
 
-/* Subtle Coles logo watermark */
-.stApp::before {
-    content: "";
+/* ---------- Coles Logo (Top Right) ---------- */
+.coles-logo {
     position: fixed;
-    top: 50%;
-    left: 50%;
-    width: 420px;
-    height: 180px;
-    background-image: url("https://upload.wikimedia.org/wikipedia/commons/5/59/Coles_Logo.svg");
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center;
-    opacity: 0.05;
-    transform: translate(-50%, -50%);
-    z-index: 0;
+    top: 16px;
+    right: 22px;
+    width: 120px;
+    opacity: 0.95;
+    z-index: 100;
 }
 
-/* Main container card */
+/* ---------- Main Card ---------- */
 .block-container {
     background-color: #FFFFFF;
     border-radius: 18px;
-    padding: 2.5rem 2.5rem;
-    margin-top: 2rem;
-    box-shadow: 0px 8px 25px rgba(0,0,0,0.15);
-    z-index: 1;
+    padding: 2.5rem 2.8rem;
+    margin-top: 3rem;
+    box-shadow: 0px 10px 30px rgba(0,0,0,0.18);
     position: relative;
+    z-index: 5;
 }
 
-/* Titles */
-h1, h2, h3 {
+/* ---------- Titles ---------- */
+h1 {
+    color: #1F2937;
+    font-weight: 800;
+    font-size: 2.1rem;
+}
+
+h2, h3 {
     color: #E11C2A;
     font-weight: 700;
 }
 
-/* Caption text */
+/* ---------- Caption ---------- */
 .stCaption {
-    color: #444444;
+    color: #4B5563;
+    font-size: 0.95rem;
+    margin-bottom: 1.2rem;
+}
+
+/* ---------- Labels ---------- */
+label {
+    font-weight: 600;
+    color: #111827;
+}
+
+/* ---------- Inputs ---------- */
+input,
+select,
+textarea {
+    border-radius: 12px !important;
+    border: 1px solid #D1D5DB !important;
+    padding: 0.55rem !important;
     font-size: 0.95rem;
 }
 
-/* Labels */
-label {
-    font-weight: 600;
-    color: #222222;
+/* ---------- Dropdown Hover ---------- */
+div[data-baseweb="select"] > div:hover {
+    border-color: #E11C2A !important;
 }
 
-/* Inputs */
-input, select, textarea {
-    border-radius: 10px !important;
-    border: 1px solid #CCCCCC !important;
-}
-
-/* Buttons */
+/* ---------- Button ---------- */
 .stButton > button {
     background-color: #E11C2A;
-    color: white;
+    color: #FFFFFF;
     font-weight: 700;
-    border-radius: 14px;
-    padding: 0.6rem 1.2rem;
+    border-radius: 16px;
+    padding: 0.7rem 1.4rem;
     border: none;
     transition: all 0.2s ease-in-out;
+    margin-top: 0.8rem;
 }
 
 .stButton > button:hover {
     background-color: #B81622;
-    transform: scale(1.02);
+    transform: scale(1.03);
 }
 
-/* Success box */
+/* ---------- Success Message ---------- */
 .stAlert-success {
     background-color: #FBE9EB;
     border-left: 6px solid #E11C2A;
-    color: #222222;
+    color: #111827;
     font-weight: 600;
+    border-radius: 10px;
 }
 
-/* Footer hide */
+/* ---------- Hide Streamlit Footer ---------- */
 footer {
+    visibility: hidden;
+}
+
+/* ---------- Hide Streamlit Menu ---------- */
+#MainMenu {
     visibility: hidden;
 }
